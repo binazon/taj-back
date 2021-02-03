@@ -10,7 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Status implements Serializable {
@@ -37,7 +39,8 @@ public class Status implements Serializable {
 	@Column
 	private Blob image;
 
-	@OneToMany(mappedBy = "status")
+	@ManyToMany
+	@JoinTable(name = "tourist_status", joinColumns = @JoinColumn(name = "idStatus"), inverseJoinColumns = @JoinColumn(name = "username"))
 	private List<Tourist> tourists;
 
 	public Status(String nameStatus, Date creationDate, int amountVisit, Blob image, List<Tourist> tourists) {

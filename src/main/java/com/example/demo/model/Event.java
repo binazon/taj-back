@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import java.io.Serializable;
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,7 +11,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Event implements Serializable {
@@ -40,7 +43,8 @@ public class Event implements Serializable {
 	@Column
 	private Blob image;
 
-	@OneToMany(mappedBy = "event")
+	@ManyToMany
+	@JoinTable(name = "tourist_event", joinColumns = @JoinColumn(name = "idEvent"), inverseJoinColumns = @JoinColumn(name = "username"))
 	private List<Tourist> tourists;
 
 	public Event(String nameEvent, Date dateStartEvent, Date dateEndEvent, double amountEvent, Blob image) {
@@ -49,6 +53,7 @@ public class Event implements Serializable {
 		this.dateEndEvent = dateEndEvent;
 		this.amountEvent = amountEvent;
 		this.image = image;
+		this.tourists = new ArrayList<Tourist>();
 	}
 
 	public Event(String nameEvent, Date dateStartEvent, Date dateEndEvent, double amountEvent, Blob image,

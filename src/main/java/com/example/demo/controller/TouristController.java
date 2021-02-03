@@ -10,5 +10,9 @@ public class TouristController {
 
 	@Autowired
 	private TouristService touristService;
+	
+	
+	
+	
 
 }

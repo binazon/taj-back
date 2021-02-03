@@ -1,13 +1,15 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Tourist implements Serializable {
@@ -31,19 +33,21 @@ public class Tourist implements Serializable {
 	@Column
 	private String phoneNumber;
 
-	@ManyToOne
+	@ManyToMany
 	@JoinTable(name = "tourist_event", joinColumns = @JoinColumn(name = "username", referencedColumnName = "username"), inverseJoinColumns = @JoinColumn(name = "idEvent", referencedColumnName = "idEvent"))
-	private Event event;
+	private List<Event> events;
 
-	@ManyToOne
+	@ManyToMany
 	@JoinTable(name = "tourist_status", joinColumns = @JoinColumn(name = "username", referencedColumnName = "username"), inverseJoinColumns = @JoinColumn(name = "idStatus", referencedColumnName = "idStatus"))
-	private Status status;
+	private List<Status> status;
 
 	public Tourist(String name, String surname, String email, String phoneNumber) {
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
+		this.events = new ArrayList<Event>();
+		this.status = new ArrayList<Status>();
 	}
 
 	public String getUsername() {
@@ -76,6 +80,22 @@ public class Tourist implements Serializable {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public List<Status> getStatus() {
+		return status;
 	}
 
 	@Override
