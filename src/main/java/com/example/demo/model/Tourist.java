@@ -33,12 +33,10 @@ public class Tourist implements Serializable {
 
 	@ManyToOne
 	@JoinTable(name = "tourist_event", joinColumns = @JoinColumn(name = "username", referencedColumnName = "username"), inverseJoinColumns = @JoinColumn(name = "idEvent", referencedColumnName = "idEvent"))
-
 	private Event event;
 
 	@ManyToOne
 	@JoinTable(name = "tourist_status", joinColumns = @JoinColumn(name = "username", referencedColumnName = "username"), inverseJoinColumns = @JoinColumn(name = "idStatus", referencedColumnName = "idStatus"))
-
 	private Status status;
 
 	public Tourist(String name, String surname, String email, String phoneNumber) {

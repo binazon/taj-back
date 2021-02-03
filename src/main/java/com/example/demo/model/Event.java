@@ -1,8 +1,9 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,14 +37,28 @@ public class Event implements Serializable {
 	@Column
 	private double amountEvent;
 
-	@OneToMany(mappedBy = "event")
-	private Set<Tourist> tourists;
+	@Column
+	private Blob image;
 
-	public Event(String nameEvent, Date dateStartEvent, Date dateEndEvent, double amountEvent) {
+	@OneToMany(mappedBy = "event")
+	private List<Tourist> tourists;
+
+	public Event(String nameEvent, Date dateStartEvent, Date dateEndEvent, double amountEvent, Blob image) {
 		this.nameEvent = nameEvent;
 		this.dateStartEvent = dateStartEvent;
 		this.dateEndEvent = dateEndEvent;
 		this.amountEvent = amountEvent;
+		this.image = image;
+	}
+
+	public Event(String nameEvent, Date dateStartEvent, Date dateEndEvent, double amountEvent, Blob image,
+			List<Tourist> tourists) {
+		this.nameEvent = nameEvent;
+		this.dateStartEvent = dateStartEvent;
+		this.dateEndEvent = dateEndEvent;
+		this.amountEvent = amountEvent;
+		this.image = image;
+		this.tourists = tourists;
 	}
 
 	public String getNameEvent() {

@@ -1,8 +1,9 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,12 +31,21 @@ public class Status implements Serializable {
 	@Column
 	private Date creationDate;
 
-	@OneToMany(mappedBy = "status")
-	private Set<Tourist> tourists;
+	@Column
+	private int amountVisit;
 
-	public Status(String nameStatus, Date creationDate) {
+	@Column
+	private Blob image;
+
+	@OneToMany(mappedBy = "status")
+	private List<Tourist> tourists;
+
+	public Status(String nameStatus, Date creationDate, int amountVisit, Blob image, List<Tourist> tourists) {
 		this.nameStatus = nameStatus;
 		this.creationDate = creationDate;
+		this.amountVisit = amountVisit;
+		this.image = image;
+		this.tourists = tourists;
 	}
 
 	public String getNameStatus() {
@@ -52,5 +62,29 @@ public class Status implements Serializable {
 
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
+	}
+
+	public Blob getImage() {
+		return image;
+	}
+
+	public void setImage(Blob image) {
+		this.image = image;
+	}
+
+	public List<Tourist> getTourists() {
+		return tourists;
+	}
+
+	public void addAllTourists(List<Tourist> tourists) {
+		this.tourists.addAll(tourists);
+	}
+
+	public int getAmountVisit() {
+		return amountVisit;
+	}
+
+	public void setAmountVisit(int amountVisit) {
+		this.amountVisit = amountVisit;
 	}
 }
