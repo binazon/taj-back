@@ -11,5 +11,4 @@ import com.example.demo.model.Status;
 public interface StatusRepository extends JpaRepository<Status, String> {
 
 	public List<Status> findAll();
-
 }

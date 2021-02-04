@@ -25,4 +25,8 @@ public class Login implements Serializable {
 	@Column
 	private String passwd;
 
+	public Login() {
+		// TODO Auto-generated constructor stub
+	}
+
 }

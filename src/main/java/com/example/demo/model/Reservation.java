@@ -37,6 +37,10 @@ public class Reservation implements Serializable {
 	@JoinColumn(name = "username")
 	private Tourist tourist;
 
+	public Reservation() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Reservation(Date dateReservation, double amountReservation, int numberPerson, Tourist tourist) {
 		this.dateReservation = dateReservation;
 		this.amountReservation = amountReservation;

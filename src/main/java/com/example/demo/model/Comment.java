@@ -30,6 +30,10 @@ public class Comment implements Serializable {
 	@Column
 	private String message;
 
+	public Comment() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Comment(Reservation reservation, String message) {
 		this.reservation = reservation;
 		this.message = message;

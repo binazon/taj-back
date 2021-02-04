@@ -3,15 +3,15 @@ package com.example.demo.model;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -39,16 +39,19 @@ public class Status implements Serializable {
 	@Column
 	private Blob image;
 
-	@ManyToMany
-	@JoinTable(name = "tourist_status", joinColumns = @JoinColumn(name = "idStatus"), inverseJoinColumns = @JoinColumn(name = "username"))
-	private List<Tourist> tourists;
+	@ManyToMany(mappedBy = "status")
+	private Set<Tourist> tourists;
+
+	public Status() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Status(String nameStatus, Date creationDate, int amountVisit, Blob image, List<Tourist> tourists) {
 		this.nameStatus = nameStatus;
 		this.creationDate = creationDate;
 		this.amountVisit = amountVisit;
 		this.image = image;
-		this.tourists = tourists;
+		this.tourists = new HashSet<Tourist>();
 	}
 
 	public String getNameStatus() {
@@ -75,12 +78,12 @@ public class Status implements Serializable {
 		this.image = image;
 	}
 
-	public List<Tourist> getTourists() {
+	public Set<Tourist> getTourists() {
 		return tourists;
 	}
 
-	public void addAllTourists(List<Tourist> tourists) {
-		this.tourists.addAll(tourists);
+	public void setTourists(Set<Tourist> tourists) {
+		this.tourists = tourists;
 	}
 
 	public int getAmountVisit() {

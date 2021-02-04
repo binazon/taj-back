@@ -31,6 +31,10 @@ public class History implements Serializable {
 
 	private Set<Reservation> reservations;
 
+	public History() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public History(Tourist tourist, Set<Reservation> reservations) {
 		this.tourist = tourist;
 		this.reservations = reservations;

@@ -1,8 +1,8 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,6 +19,7 @@ public class Tourist implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name = "username")
 	private String username;
 
 	@Column
@@ -34,20 +35,24 @@ public class Tourist implements Serializable {
 	private String phoneNumber;
 
 	@ManyToMany
-	@JoinTable(name = "tourist_event", joinColumns = @JoinColumn(name = "username", referencedColumnName = "username"), inverseJoinColumns = @JoinColumn(name = "idEvent", referencedColumnName = "idEvent"))
-	private List<Event> events;
+	@JoinTable(name = "tourist_event", joinColumns = @JoinColumn(name = "username"), inverseJoinColumns = @JoinColumn(name = "idEvent"))
+	private Set<Event> events;
 
 	@ManyToMany
-	@JoinTable(name = "tourist_status", joinColumns = @JoinColumn(name = "username", referencedColumnName = "username"), inverseJoinColumns = @JoinColumn(name = "idStatus", referencedColumnName = "idStatus"))
-	private List<Status> status;
+	@JoinTable(name = "tourist_status", joinColumns = @JoinColumn(name = "username"), inverseJoinColumns = @JoinColumn(name = "idStatus"))
+	private Set<Status> status;
+
+	public Tourist() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Tourist(String name, String surname, String email, String phoneNumber) {
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		this.events = new ArrayList<Event>();
-		this.status = new ArrayList<Status>();
+		this.events = new HashSet<Event>();
+		this.status = new HashSet<Status>();
 	}
 
 	public String getUsername() {
@@ -90,12 +95,20 @@ public class Tourist implements Serializable {
 		this.email = email;
 	}
 
-	public List<Event> getEvents() {
+	public Set<Event> getEvents() {
 		return events;
 	}
 
-	public List<Status> getStatus() {
+	public void setEvents(Set<Event> events) {
+		this.events = events;
+	}
+
+	public Set<Status> getStatus() {
 		return status;
+	}
+
+	public void setStatus(Set<Status> status) {
+		this.status = status;
 	}
 
 	@Override

@@ -34,6 +34,10 @@ public class Monument implements Serializable {
 	@Column
 	private Blob image;
 
+	public Monument() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Monument(String entitledMonument, String adresseMonument, int capacityMonument, Blob image) {
 		this.entitledMonument = entitledMonument;
 		this.adresseMonument = adresseMonument;
