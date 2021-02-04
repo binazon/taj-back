@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import java.sql.Blob;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -37,7 +36,7 @@ public class Status implements Serializable {
 	private int amountVisit;
 
 	@Column
-	private Blob image;
+	private String image;
 
 	@ManyToMany(mappedBy = "status")
 	private Set<Tourist> tourists;
@@ -46,7 +45,7 @@ public class Status implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Status(String nameStatus, Date creationDate, int amountVisit, Blob image, List<Tourist> tourists) {
+	public Status(String nameStatus, Date creationDate, int amountVisit, String image, List<Tourist> tourists) {
 		this.nameStatus = nameStatus;
 		this.creationDate = creationDate;
 		this.amountVisit = amountVisit;
@@ -70,11 +69,11 @@ public class Status implements Serializable {
 		this.creationDate = creationDate;
 	}
 
-	public Blob getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(Blob image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 

@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import java.sql.Blob;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,13 +31,13 @@ public class Monument implements Serializable {
 	private int capacityMonument;
 
 	@Column
-	private Blob image;
+	private String image;
 
 	public Monument() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Monument(String entitledMonument, String adresseMonument, int capacityMonument, Blob image) {
+	public Monument(String entitledMonument, String adresseMonument, int capacityMonument, String image) {
 		this.entitledMonument = entitledMonument;
 		this.adresseMonument = adresseMonument;
 		this.capacityMonument = capacityMonument;
@@ -69,11 +68,11 @@ public class Monument implements Serializable {
 		this.capacityMonument = capacityMonument;
 	}
 
-	public Blob getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(Blob image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 

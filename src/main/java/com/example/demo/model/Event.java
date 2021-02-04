@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import java.sql.Blob;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -39,7 +38,7 @@ public class Event implements Serializable {
 	private double amountEvent;
 
 	@Column
-	private Blob image;
+	private String image;
 
 	@ManyToMany(mappedBy = "events")
 	private Set<Tourist> tourists;
@@ -48,7 +47,7 @@ public class Event implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Event(String nameEvent, Date dateStartEvent, Date dateEndEvent, double amountEvent, Blob image) {
+	public Event(String nameEvent, Date dateStartEvent, Date dateEndEvent, double amountEvent, String image) {
 		this.nameEvent = nameEvent;
 		this.dateStartEvent = dateStartEvent;
 		this.dateEndEvent = dateEndEvent;
@@ -57,7 +56,7 @@ public class Event implements Serializable {
 		this.tourists = new HashSet<Tourist>();
 	}
 
-	public Event(String nameEvent, Date dateStartEvent, Date dateEndEvent, double amountEvent, Blob image,
+	public Event(String nameEvent, Date dateStartEvent, Date dateEndEvent, double amountEvent, String image,
 			Set<Tourist> tourists) {
 		this.nameEvent = nameEvent;
 		this.dateStartEvent = dateStartEvent;
@@ -91,11 +90,11 @@ public class Event implements Serializable {
 		this.dateEndEvent = dateEndEvent;
 	}
 
-	public Blob getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(Blob image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
