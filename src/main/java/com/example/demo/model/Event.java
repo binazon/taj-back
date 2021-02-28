@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Event implements Serializable {
 
@@ -40,6 +42,7 @@ public class Event implements Serializable {
 	@Column
 	private String image;
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "events")
 	private Set<Tourist> tourists;
 

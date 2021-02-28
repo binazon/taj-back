@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Tourist implements Serializable {
 	/**
@@ -35,10 +37,12 @@ public class Tourist implements Serializable {
 	private String phoneNumber;
 
 	@ManyToMany
+	@JsonIgnore
 	@JoinTable(name = "tourist_event", joinColumns = @JoinColumn(name = "username"), inverseJoinColumns = @JoinColumn(name = "idEvent"))
 	private Set<Event> events;
 
 	@ManyToMany
+	@JsonIgnore
 	@JoinTable(name = "tourist_status", joinColumns = @JoinColumn(name = "username"), inverseJoinColumns = @JoinColumn(name = "idStatus"))
 	private Set<Status> status;
 

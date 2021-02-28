@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Reservation implements Serializable {
 
@@ -33,6 +35,7 @@ public class Reservation implements Serializable {
 	@Column
 	private int numberPerson;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "username")
 	private Tourist tourist;

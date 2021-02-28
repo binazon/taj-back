@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Status implements Serializable {
 
@@ -38,6 +40,7 @@ public class Status implements Serializable {
 	@Column
 	private String image;
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "status")
 	private Set<Tourist> tourists;
 
