@@ -11,5 +11,8 @@ import com.example.demo.model.Tourist;
 public interface TouristRepository extends JpaRepository<Tourist, String> {
 
 	public Tourist findByUsername(String userName);
+
 	public List<Tourist> findByName(String name);
+
+	public List<Tourist> findAll();
 }
